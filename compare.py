@@ -65,15 +65,18 @@ def read_evaluation_data(fname):
     doc_id2doc = {}
     doc_id = 0
     for line in codecs.open(fname, 'r', 'utf8'):
-        if not line.strip():
+        line = line.strip()
+        if not line:
             continue
         try:
             document, key = line.split('\t')
             key = key.strip()
+            document = document.strip()
             doc_id2key[doc_id] = key
         except ValueError:
             document = line
-        document = document.strip()
+        if key == 'X':
+            continue
         doc_id2doc[doc_id] = document
         doc_id += 1
     return doc_id2doc, doc_id2key

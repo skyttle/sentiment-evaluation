@@ -11,7 +11,7 @@ A tool for evaluating the accuracy of Sentiment Analysis REST API services, agai
 
     ``pip install -r requirements-testing.txt`` (optionally, for testing the code)
 
-2. The gold standard data should be a text file, where on each line there is a document (with tabs and newline removed) followed by a tab character, followed by the manually assigned label: "0" for neutral, "+" for positive, "-" for negative. See example in ``evaluation_data.txt``.
+2. The gold standard data should be a text file, where on each line there is a document (with tabs and newline removed) followed by a tab character, followed by the manually assigned label: "0" for neutral, "+" for positive, "-" for negative, "X" for irrelevant (these documents will be excluded from the evaluation). See example in ``evaluation_data.txt``.
 
 3. Obtain access keys for each API you’d like to evaluate, and put them into ``config.txt`` found in the root folder.
 
@@ -37,5 +37,5 @@ More information can be found [here](http://blog.skyttle.com/?p=100).
 
 * The API providers impose limits on the free usage of the APIs, so if you don't want to incur charges, make sure the size of your test data is within the free usage allowance for all analyzers that you include into the comparison.
 
-* [Semantapi](http://www.semantapi.com/) is a similar project, written in C#
+* [Semantapi](http://www.semantapi.com/) is a similar project, written in C#.
 

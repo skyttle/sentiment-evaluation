@@ -39,6 +39,16 @@ class TestCase(unittest.TestCase):
             self.assertEqual(act_doc_id2key, exp_doc_id2key)
             self.assertEqual(act_doc_id2doc, exp_doc_id2doc)
 
+    def test_read_evaluation_data__ignores_documents_marked_as_irrelevant(self):
+        exp_doc_id2doc = {0: 'a', 1: 'c'}
+        exp_doc_id2key = {0: '+', 1: '0'}
+        lines = ["a\t+", "b\tX", "c\t0"]
+        mock_open = Mock(return_value=lines)
+        with patch('compare.codecs.open', mock_open):
+            act_doc_id2doc, act_doc_id2key = read_evaluation_data('test.txt')
+            self.assertEqual(act_doc_id2key, exp_doc_id2key)
+            self.assertEqual(act_doc_id2doc, exp_doc_id2doc)
+
     def test_process_one_doc(self):
         mock_analyzers = [
             get_mock_analyzer('one', '+'),
