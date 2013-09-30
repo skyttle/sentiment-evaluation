@@ -1,7 +1,7 @@
 sentiment-evaluation
 ====================
 
-A tool for evaluating the accuracy of Sentiment Analysis REST API services, against a gold standard dataset (a list of manually annotated sentences). Currently supports [Alchemy](http://www.alchemyapi.com/), [Bitext](http://www.bitext.com/bitext-api-2.html), [Chatterbox](http://chatterbox.co/), [Datumbox](http://www.datumbox.com/machine-learning-api/), [Repustate](https://www.repustate.com/), [Semantria](https://semantria.com/), [Skyttle](http://www.skyttle.com/), and [Viralheat](https://app.viralheat.com/developer).
+A tool for evaluating the accuracy of Sentiment Analysis REST API services, against a gold standard dataset (a list of manually annotated sentences). Currently supports: [Alchemy](http://www.alchemyapi.com/), [Bitext](http://www.bitext.com/bitext-api-2.html), [Chatterbox](http://chatterbox.co/), [Datumbox](http://www.datumbox.com/machine-learning-api/), [Repustate](https://www.repustate.com/), [Semantria](https://semantria.com/), [Skyttle](http://www.skyttle.com/), and [Viralheat](https://app.viralheat.com/developer).
 
 **Installation**
 
@@ -34,3 +34,6 @@ More information can be found [here](http://blog.skyttle.com/?p=100).
 **Notes**
 
 * The API providers impose limits on the free usage of the API, so if you don't want to incur charges, make sure the size of your test data is within the free usage allowance for all analyzers that you include into the comparison.
+
+* [Semantapi](http://www.semantapi.com/) is a similar project, written in C#
+
