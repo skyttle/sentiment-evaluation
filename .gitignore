@@ -40,3 +40,4 @@ nosetests.xml
 # custom files
 results.csv
 filled_out_config.txt
+*.log

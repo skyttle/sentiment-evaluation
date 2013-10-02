@@ -1,7 +1,7 @@
 sentiment-evaluation
 ====================
 
-A tool for evaluating the accuracy of Sentiment Analysis REST API services, against a gold standard dataset (a list of manually annotated sentences). Currently supports: [Alchemy](http://www.alchemyapi.com/), [Bitext](http://www.bitext.com/bitext-api-2.html), [Chatterbox](http://chatterbox.co/), [Datumbox](http://www.datumbox.com/machine-learning-api/), [Repustate](https://www.repustate.com/), [Semantria](https://semantria.com/), [Skyttle](http://www.skyttle.com/), and [Viralheat](https://app.viralheat.com/developer).
+A tool for evaluating the accuracy of Sentiment Analysis REST API services, against a gold standard dataset (a list of manually annotated sentences). Currently supports: [Alchemy](http://www.alchemyapi.com/), [Bitext](http://www.bitext.com/bitext-api-2.html), [Chatterbox](http://chatterbox.co/), [Datumbox](http://www.datumbox.com/machine-learning-api/), [Lymbix](http://www.lymbix.com/), [Repustate](https://www.repustate.com/), [Semantria](https://semantria.com/), [Skyttle](http://www.skyttle.com/), and [Viralheat](https://app.viralheat.com/developer).
 
 **Installation**
 

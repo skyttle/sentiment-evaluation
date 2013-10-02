@@ -14,6 +14,7 @@ from alchemy import Alchemy
 from bitext import Bitext
 from chatterbox import Chatterbox
 from datumbox import Datumbox
+from lymbix import Lymbix
 from repustate import Repustate
 from semantria_api import Semantria
 from skyttle import Skyttle
@@ -29,7 +30,8 @@ ANALYZERS_TO_USE = [
                     'bitext',
                     'alchemy',
                     'semantria',
-                    'viralheat'
+                    'viralheat',
+                    'lymbix',
                 ]
 ANALYZERS = []
 LOGGER = None
@@ -135,6 +137,9 @@ def initialize_analysers(config):
         viralheat = Viralheat(api_key=config['viralheat_key'])
         ANALYZERS.append(viralheat)
 
+    if 'lymbix' in ANALYZERS_TO_USE:
+        lymbix = Lymbix(api_key=config['lymbix_key'])
+        ANALYZERS.append(lymbix)
 
 def process_one_doc(text, key):
     """Process one document in all analyzers
@@ -254,7 +259,7 @@ if __name__ == "__main__":
 
     if len(sys.argv) > 1:
         eval_data_fname = sys.argv[1]
-        if len(sys.argv) == 2:
+        if len(sys.argv) == 3:
             config_fname = sys.argv[2]
     else:
         raise Exception("Please specify the path to the file with evaluation data")
