@@ -72,11 +72,11 @@ def read_evaluation_data(fname):
             document, key = line.split('\t')
             key = key.strip()
             document = document.strip()
-            doc_id2key[doc_id] = key
         except ValueError:
             document = line
         if key == 'X':
             continue
+        doc_id2key[doc_id] = key
         doc_id2doc[doc_id] = document
         doc_id += 1
     return doc_id2doc, doc_id2key
