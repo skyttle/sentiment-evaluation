@@ -33,3 +33,10 @@ nosetests.xml
 .mr.developer.cfg
 .project
 .pydevproject
+
+# virtual env
+.env
+
+# custom files
+results.csv
+filled_out_config.txt
