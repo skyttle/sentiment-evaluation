@@ -1,6 +1,6 @@
 """Usage:
 
-python compare.py <path to text file with annotated data>
+python compare.py <path to text file with annotated data> <path to config file>
 """
 
 import sys
@@ -82,12 +82,13 @@ def read_evaluation_data(fname):
     return doc_id2doc, doc_id2key
 
 
-def read_config():
+def read_config(config_fname=None):
     """Read API keys
     """
     config = {}
-    fname = 'config.txt'
-    for line in codecs.open(fname, 'r', 'utf8'):
+    if not config_fname:
+        config_fname = 'config.txt'
+    for line in codecs.open(config_fname, 'r', 'utf8'):
         line = line.strip()
         key, val = line.split('\t')
         config[key] = val
@@ -195,7 +196,7 @@ def evaluate(doc_id2text, doc_id2key):
     accuracy = Counter()
     error_rate = Counter()
 
-    cvswriter = csv.writer(open('results.csv', 'wb'), delimiter='\t')
+    cvswriter = csv.writer(codecs.open('results.csv', 'wb', 'utf8'), delimiter='\t')
     col_names = ['doc_id', 'text', 'gold standard'] + [x.name for x in ANALYZERS]
     cvswriter.writerow(col_names)
 
@@ -219,17 +220,17 @@ def evaluate(doc_id2text, doc_id2key):
     return accuracy, error_rate
 
 
-def main(test_data_fname):
+def main(eval_data_fname, config_fname):
     """Main function
     """
 
     setup_logging()
 
     # read test data
-    doc_id2text, doc_id2key = read_evaluation_data(test_data_fname)
+    doc_id2text, doc_id2key = read_evaluation_data(eval_data_fname)
 
     # read config
-    config = read_config()
+    config = read_config(config_fname)
 
     # initialise relevant analysers
     initialize_analysers(config)
@@ -248,4 +249,14 @@ def main(test_data_fname):
 
 if __name__ == "__main__":
 
-    main(sys.argv[1])
+    eval_data_fname = None
+    config_fname = None
+
+    if len(sys.argv) > 1:
+        eval_data_fname = sys.argv[1]
+        if len(sys.argv) == 2:
+            config_fname = sys.argv[2]
+    else:
+        raise Exception("Please specify the path to the file with evaluation data")
+
+    main(eval_data_fname, config_fname)

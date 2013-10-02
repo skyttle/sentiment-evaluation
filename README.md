@@ -19,7 +19,7 @@ A tool for evaluating the accuracy of Sentiment Analysis REST API services, agai
 
 **Usage**
 
-    ``python compare.py path-to-text-file-with-annotated-data``
+    ``python compare.py path-to-text-file-with-annotated-data path-to-config-file``
 
 **Output**
 

@@ -103,6 +103,7 @@ class TestCase(unittest.TestCase):
         doc_id2key = {0: '+'}
         with patch('compare.process_one_doc', mock_process), \
                 patch('compare.csv'), \
+                patch('compare.codecs'), \
                 patch('compare.ANALYZERS', [mock_analyzer]):
             act_accuracy, act_error_rate = evaluate(doc_id2text, doc_id2key)
             self.assertEqual(sorted(act_accuracy.items()), sorted(exp_accuracy.items()))
