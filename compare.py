@@ -19,19 +19,21 @@ from repustate import Repustate
 from semantria_api import Semantria
 from skyttle import Skyttle
 from viralheat import Viralheat
+from aiapplied import AIApplied
 from thr import Thr
 
 
 ANALYZERS_TO_USE = [
-                    'skyttle',
-                    'chatterbox',
-                    'datumbox',
-                    'repustate',
-                    'bitext',
-                    'alchemy',
-                    'semantria',
-                    'viralheat',
-                    'lymbix',
+                    #'skyttle',
+                    #'chatterbox',
+                    #'datumbox',
+                    #'repustate',
+                    #'bitext',
+                    #'alchemy',
+                    #'semantria',
+                    #'viralheat',
+                    #'lymbix',
+                    'aiapplied',
                 ]
 ANALYZERS = []
 LOGGER = None
@@ -58,8 +60,7 @@ def setup_logging():
 
 
 def read_evaluation_data(fname):
-    """Read the file with test documents, possibly provided with the key in the
-    second column (+, -, or 0)
+    """Read the gold standard data.
     :return doc_id2doc: document id to the text of the document
     :return doc_id2key: document id to the manually assigned sentiment label
     """
@@ -140,6 +141,11 @@ def initialize_analysers(config):
     if 'lymbix' in ANALYZERS_TO_USE:
         lymbix = Lymbix(api_key=config['lymbix_key'])
         ANALYZERS.append(lymbix)
+
+    if 'aiapplied' in ANALYZERS_TO_USE:
+        aiapplied = AIApplied(api_key=config['aiapplied_key'],
+                              language=config['language'])
+        ANALYZERS.append(aiapplied)
 
 def process_one_doc(text, key):
     """Process one document in all analyzers

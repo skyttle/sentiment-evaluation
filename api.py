@@ -22,5 +22,6 @@ class API:
                                   headers=headers)
         response = opener.open(request)
         opener.close()
-        data = json.loads(response.read())
+        contents = response.read()
+        data = json.loads(contents)
         return data
