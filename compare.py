@@ -20,20 +20,22 @@ from semantria_api import Semantria
 from skyttle import Skyttle
 from viralheat import Viralheat
 from aiapplied import AIApplied
+from sentigem import Sentigem
 from thr import Thr
 
 
 ANALYZERS_TO_USE = [
-                    #'skyttle',
-                    #'chatterbox',
-                    #'datumbox',
-                    #'repustate',
-                    #'bitext',
-                    #'alchemy',
-                    #'semantria',
-                    #'viralheat',
-                    #'lymbix',
+                    'skyttle',
+                    'chatterbox',
+                    'datumbox',
+                    'repustate',
+                    'bitext',
+                    'alchemy',
+                    'semantria',
+                    'viralheat',
+                    'lymbix',
                     'aiapplied',
+                    'sentigem'
                 ]
 ANALYZERS = []
 LOGGER = None
@@ -92,9 +94,8 @@ def read_config(config_fname=None):
     if not config_fname:
         config_fname = 'config.txt'
     for line in codecs.open(config_fname, 'r', 'utf8'):
-        line = line.strip()
         key, val = line.split('\t')
-        config[key] = val
+        config[key.strip()] = val.strip()
     return config
 
 
@@ -146,6 +147,10 @@ def initialize_analysers(config):
         aiapplied = AIApplied(api_key=config['aiapplied_key'],
                               language=config['language'])
         ANALYZERS.append(aiapplied)
+
+    if 'sentigem' in ANALYZERS_TO_USE:
+        sentigem = Sentigem(api_key=config['sentigem_key'])
+        ANALYZERS.append(sentigem)
 
 def process_one_doc(text, key):
     """Process one document in all analyzers
