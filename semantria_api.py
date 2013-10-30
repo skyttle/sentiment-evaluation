@@ -14,7 +14,6 @@ def onError(sender, result):
     LOGGER.error(result)
 
 
-
 class Semantria:
 
     def __init__(self, consumer_key, consumer_secret):
@@ -26,9 +25,9 @@ class Semantria:
     def extract_label(self, score):
         """Given scores for pos, neg and neu, output the label
         """
-        if score > 0.0:
+        if score > 0.22:
             return '+'
-        elif score < 0.0:
+        elif score < -0.05:
             return '-'
         else:
             return '0'
