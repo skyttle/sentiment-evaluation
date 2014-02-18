@@ -10,7 +10,6 @@ import csv
 import logging
 from collections import Counter
 
-from alchemy import Alchemy
 from bitext import Bitext
 from chatterbox import Chatterbox
 from datumbox import Datumbox
@@ -30,7 +29,6 @@ ANALYZERS_TO_USE = [
                     'datumbox',
                     'repustate',
                     'bitext',
-                    'alchemy',
                     'semantria',
                     'viralheat',
                     'lymbix',
@@ -125,10 +123,6 @@ def initialize_analysers(config):
                         password=config['bitext_pwd'],
                         language=config['language'])
         ANALYZERS.append(bitext)
-
-    if 'alchemy' in ANALYZERS_TO_USE:
-        alchemy = Alchemy(api_key=config['alchemy_key'])
-        ANALYZERS.append(alchemy)
 
     if 'semantria' in ANALYZERS_TO_USE:
         semantria = Semantria(consumer_key=config['semantria_consumer_key'],
